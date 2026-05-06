@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Corey Smith — Photographer • Videographer • Editor | Ace Photography Co.</title>
+<meta name="description" content="Corey Smith — visual storytelling for local businesses across New Jersey and beyond. Photography, videography, drone, and editing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+  :root {
+    --ink: #0e0e0c;
+    --paper: #f3efe6;
+    --paper-warm: #eae3d3;
+    --accent: #E8A33D;
+    --accent-deep: #c2872d;
+    --mute: #6b6658;
+    --rule: #1a1a17;
+    --body-text: #2a2822;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 14;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* subtle grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 100;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 50;
+    background: rgba(243, 239, 230, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 26, 23, 0.08);
+  }
+  nav .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: inherit; }
+  nav .brand img { height: 38px; width: auto; display: block; }
+  nav .brand .brand-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink); line-height: 1.3;
+  }
+  nav .brand .brand-text small { display: block; color: var(--mute); font-size: 0.85em; letter-spacing: 0.14em; margin-top: 1px; }
+  nav ul { list-style: none; display: flex; gap: 1.6rem; align-items: center; }
+  nav a {
+    color: var(--ink); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.2s;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  nav a:hover { color: var(--accent-deep); }
+  nav a.active { color: var(--accent-deep); border-bottom: 1px solid var(--accent-deep); padding-bottom: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 70px);
+    padding: 7rem 2.5rem 3rem;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232, 163, 61, 0.12), transparent 65%),
+      var(--paper);
+  }
+  .hero .hero-tag {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  h1.display {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-weight: 300;
+    font-size: clamp(3rem, 9vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    margin: 0 0 1.5rem;
+    max-width: 16ch;
+  }
+  h1.display em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-deep);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+  .hero-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: 1.5;
+    max-width: 50ch;
+    color: var(--body-text);
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  .btn.primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--paper); }
+
+  /* MARQUEE */
+  .marquee {
+    background: var(--ink); color: var(--paper);
+    padding: 0.9rem 0; overflow: hidden; white-space: nowrap;
+    border-bottom: 1px solid var(--rule);
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-size: 1.3rem; font-weight: 300;
+  }
+  .marquee-track span { margin: 0 2rem; }
+  .marquee-track .dot { color: var(--accent); }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* CHAPTER */
+  section.chapter {
+    padding: 6rem 2.5rem;
+    max-width: 1400px; margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+  }
+  .chapter-head {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 2rem; margin-bottom: 3rem;
+    align-items: baseline;
+  }
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    color: var(--accent-deep);
+    border-top: 2px solid var(--accent);
+    padding-top: 0.5rem;
+  }
+  .chapter-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 0.98; letter-spacing: -0.02em;
+  }
+  .chapter-title em { font-style: italic; color: var(--accent-deep); }
+  .chapter-lead {
+    grid-column: 2;
+    font-size: 1.1rem; line-height: 1.55;
+    color: var(--body-text);
+    max-width: 65ch;
+    margin-top: 0.8rem;
+  }
+
+  /* VIDEO EMBEDS */
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .video-frame iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; border: 0;
+  }
+
+  /* REEL section */
+  .reel-wrapper { max-width: 1100px; margin: 0 auto; }
+  .reel-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  /* WORK section */
+  .work-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .project { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; flex-wrap: wrap;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.8rem;
+  }
+  .project-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.1;
+  }
+  .project-title em { font-style: italic; color: var(--accent-deep); }
+  .project-roles {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mute);
+    text-align: right;
+  }
+  .project-blurb {
+    font-size: 1rem; line-height: 1.55;
+    color: var(--body-text);
+    max-width: 70ch;
+  }
+
+  /* PHOTOGRAPHY GRID */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .photo-grid figure {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    aspect-ratio: 4 / 3;
+  }
+  .photo-grid img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .photo-grid figure:hover img { transform: scale(1.04); }
+
+  /* ABOUT preview */
+  .about-preview {
+    background: var(--paper-warm);
+    padding: 6rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center; }
+  .about-preview .lede {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    line-height: 1.35; font-weight: 300;
+    margin-bottom: 1.6rem;
+    color: var(--ink);
+  }
+  .about-preview .lede em { font-style: italic; color: var(--accent-deep); }
+  .about-preview p { font-size: 1.05rem; line-height: 1.6; color: var(--body-text); margin-bottom: 1.2rem; }
+  .about-preview .stat-block {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+  }
+  .about-preview .stat .num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-size: 2rem; font-weight: 400; line-height: 1;
+    color: var(--accent-deep);
+  }
+  .about-preview .stat .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mute);
+    margin-top: 0.3rem; display: block;
+  }
+
+  /* REACH */
+  .reach { background: var(--ink); color: var(--paper); padding: 7rem 2.5rem; position: relative; overflow: hidden; }
+  .reach .chapter-num { color: var(--accent); border-color: var(--accent); }
+  .reach .chapter-title { color: var(--paper); }
+  .reach .chapter-title em { color: var(--accent); }
+  .reach-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .reach-big {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 300; font-style: italic;
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    line-height: 0.98; letter-spacing: -0.03em;
+    margin-bottom: 4rem; max-width: 900px;
+  }
+  .reach-big a {
+    color: var(--accent); text-decoration: none;
+    border-bottom: 3px solid var(--accent);
+    transition: all 0.3s;
+  }
+  .reach-big a:hover { color: var(--paper); border-color: var(--paper); }
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; padding-top: 3rem;
+    border-top: 1px solid rgba(243,239,230,0.2);
+  }
+  .contact-card { display: flex; flex-direction: column; gap: 0.5rem; }
+  .contact-card .mono { color: rgba(243,239,230,0.5); }
+  .contact-card a, .contact-card .static {
+    color: var(--paper); text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem; font-weight: 400;
+    transition: color 0.2s; word-break: break-word;
+  }
+  .contact-card a:hover { color: var(--accent); }
+  .reach-big-mono {
+    position: absolute;
+    bottom: -5rem; right: -2rem;
+    font-family: 'Fraunces', serif;
+    font-size: 30rem; font-weight: 300; font-style: italic;
+    color: rgba(232,163,61,0.07);
+    line-height: 0.8; pointer-events: none;
+  }
+
+  footer {
+    background: var(--ink); color: rgba(243,239,230,0.5);
+    padding: 1.5rem 2.5rem;
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border-top: 1px solid rgba(243,239,230,0.15);
+  }
+
+  /* MOBILE */
+  @media (max-width: 860px) {
+    nav { padding: 0.7rem 1rem; }
+    nav .brand img { height: 32px; }
+    nav .brand .brand-text { display: none; }
+    nav ul { gap: 0.9rem; }
+    nav a { font-size: 0.62rem; letter-spacing: 0.1em; }
+
+    .hero { padding: 6rem 1.2rem 3rem; min-height: auto; }
+
+    section.chapter { padding: 4rem 1.2rem; }
+    .chapter-head { grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 2.5rem; }
+    .chapter-lead { grid-column: 1; }
+
+    .work-grid { gap: 3rem; }
+    .project-head { flex-direction: column; gap: 0.5rem; }
+    .project-roles { text-align: left; }
+
+    .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+
+    .about-preview { padding: 4rem 1.2rem; }
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .reach { padding: 4rem 1.2rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .reach-big-mono { font-size: 18rem; bottom: -3rem; }
+
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.2rem; text-align: center; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); animation: rise 1s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="/">
+    <img src="assets/logo.png" alt="Ace Photography Co. logo">
+    <span class="brand-text">Corey Smith<small>Photographer · Videographer · Editor</small></span>
+  </a>
+  <ul>
+    <li><a href="#reel">Reel</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#photography">Photos</a></li>
+    <li><a href="about/">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="hero-tag reveal delay-1">Portfolio · Vol. 01 / 2026</span>
+  <p class="hero-tagline reveal delay-1">Photographer · Videographer · Editor</p>
+  <h1 class="display reveal delay-2">
+    Corey<br>Smith.
+  </h1>
+  <p class="hero-sub reveal delay-3">
+    Visual storytelling for local businesses across New Jersey and beyond — photography, videography, drone, and editing under one roof.
+  </p>
+  <div class="hero-cta reveal delay-4">
+    <a href="#reel" class="btn primary">Watch the Reel</a>
+    <a href="#work" class="btn">See the Work</a>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Photography</span><span class="dot">✦</span><span>Videography</span><span class="dot">✦</span><span>Drone</span><span class="dot">✦</span><span>Editing</span><span class="dot">✦</span><span>Direction</span><span class="dot">✦</span><span>Cinematography</span><span class="dot">✦</span><span>Photography</span><span class="dot">✦</span><span>Videography</span><span class="dot">✦</span><span>Drone</span><span class="dot">✦</span><span>Editing</span><span class="dot">✦</span><span>Direction</span><span class="dot">✦</span><span>Cinematography</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- REEL -->
+<section class="chapter" id="reel">
+  <div class="chapter-head">
+    <div class="chapter-num">CH. 01</div>
+    <h2 class="chapter-title">Work Sample <em>Reel.</em></h2>
+    <p class="chapter-lead">A two-minute look at what I do — directing, shooting, and cutting visual content for clients across New Jersey.</p>
+  </div>
+
+  <div class="reel-wrapper">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/mN3f1GnOn0g?rel=0&modestbranding=1"
+        title="Corey Smith — Reel"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="reel-meta">
+      <span>Reel · 2026</span>
+      <span>Director · Cinematographer · Editor</span>
+    </div>
+  </div>
+</section>
+
+<!-- FULL PROJECTS -->
+<section class="chapter" id="work">
+  <div class="chapter-head">
+    <div class="chapter-num">CH. 02</div>
+    <h2 class="chapter-title">Featured <em>work.</em></h2>
+    <p class="chapter-lead">Three full projects featured in the reel — music video, commercial, and short documentary.</p>
+  </div>
+
+  <div class="work-grid">
+
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">Carolyn Moon — <em>"Your Own Road"</em></h3>
+        <div class="project-roles">Director · Cinematographer · Editor<br><span style="color:var(--accent-deep);">Live Music Video</span></div>
+      </div>
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/P6cxoMsJhvM?rel=0&modestbranding=1"
+          title="Carolyn Moon — Your Own Road (Live Music Video)"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <p class="project-blurb">A live performance music video for indie artist Carolyn Moon — directed, shot, and edited to capture the song's intimacy and movement.</p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">Knock on Wood <em>Tree Service</em></h3>
+        <div class="project-roles">Videographer · Editor<br><span style="color:var(--accent-deep);">Promotional Commercial</span></div>
+      </div>
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/7bQfde7qQJ0?rel=0&modestbranding=1"
+          title="Knock on Wood Tree Service — Promo"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <p class="project-blurb">Promotional commercial for a Hunterdon County tree service — drone, ground footage, and on-site interviews edited into a tight brand story.</p>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3 class="project-title">The Beauty of <em>Round Valley</em></h3>
+        <div class="project-roles">Director · Editor · Writer<br><span style="color:var(--accent-deep);">Short Documentary</span></div>
+      </div>
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/n50biLtlBuc?rel=0&modestbranding=1"
+          title="The Beauty of Round Valley — Short Documentary"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <p class="project-blurb">Short documentary on Round Valley — a love letter to one of New Jersey's most striking natural reservoirs, written, directed, and edited from drone and ground footage.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section class="chapter" id="photography">
+  <div class="chapter-head">
+    <div class="chapter-num">CH. 03</div>
+    <h2 class="chapter-title">Photo &amp; <em>digital media.</em></h2>
+    <p class="chapter-lead">Selected stills from commercial, event, drone, and lifestyle work across New Jersey.</p>
+  </div>
+
+  <div class="photo-grid">
+    <figure><img src="assets/photos/01.jpg" alt="Photography work — frame 01" loading="lazy"></figure>
+    <figure><img src="assets/photos/02.jpg" alt="Photography work — frame 02" loading="lazy"></figure>
+    <figure><img src="assets/photos/03.jpg" alt="Photography work — frame 03" loading="lazy"></figure>
+    <figure><img src="assets/photos/04.jpg" alt="Photography work — frame 04" loading="lazy"></figure>
+    <figure><img src="assets/photos/05.jpg" alt="Photography work — frame 05" loading="lazy"></figure>
+    <figure><img src="assets/photos/06.jpg" alt="Photography work — frame 06" loading="lazy"></figure>
+    <figure><img src="assets/photos/07.jpg" alt="Photography work — frame 07" loading="lazy"></figure>
+    <figure><img src="assets/photos/08.jpg" alt="Photography work — frame 08" loading="lazy"></figure>
+    <figure><img src="assets/photos/09.jpg" alt="Photography work — frame 09" loading="lazy"></figure>
+    <figure><img src="assets/photos/10.jpg" alt="Photography work — frame 10" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section class="about-preview" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="chapter-num" style="margin-bottom:1.4rem;">CH. 04 — ABOUT</div>
+      <p class="lede">Visual storytelling that lives where <em>technical craft meets creative vision.</em></p>
+      <p>Corey Smith is a 19-year-old multi-disciplinary digital media professional from Hunterdon County, New Jersey — currently studying Digital Media and Film at Raritan Valley Community College.</p>
+      <p>Founder of Ace Digital Co. and Ace Photography Co., recognized in 2024 as one of the Hunterdon County Chamber's "Amazing Kids in Business."</p>
+      <p style="margin-top:1.6rem;"><a href="about/" class="btn">Read the full bio &amp; statement →</a></p>
+    </div>
+    <aside>
+      <div class="stat-block">
+        <div class="stat"><div class="num">19</div><span class="label">Years old</span></div>
+        <div class="stat"><div class="num">DJI</div><span class="label">Drone certified</span></div>
+        <div class="stat"><div class="num">NJ</div><span class="label">Hunterdon County</span></div>
+        <div class="stat"><div class="num">'24</div><span class="label">Amazing Kids in Business</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="reach" id="contact">
+  <div class="reach-big-mono">AP</div>
+  <div class="reach-inner">
+    <div class="chapter-head">
+      <div class="chapter-num">CH. 05</div>
+      <h2 class="chapter-title">Get in <em>touch.</em></h2>
+    </div>
+
+    <p class="reach-big">
+      Got a project in mind? A space that needs photographing? A story to tell? <a href="mailto:Coreysmithproducts@gmail.com">Let's talk.</a>
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="mono">Email</span>
+        <a href="mailto:Coreysmithproducts@gmail.com">Coreysmithproducts<br>@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <span class="mono">Phone / Text</span>
+        <a href="tel:+19083438418">908-343-8418</a>
+      </div>
+      <div class="contact-card">
+        <span class="mono">Based in</span>
+        <span class="static">Lebanon, NJ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Corey Smith · Ace Photography Co.</span>
+  <span>Made in Hunterdon County</span>
+</footer>
+
+</body>
+</html>
